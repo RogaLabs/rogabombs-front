@@ -1,7 +1,7 @@
 <template>
   <div class="fame">
     <card-header
-      img="http://via.placeholder.com/65x65"
+      :img="img"
       subtitle="Maio/2018"
       title="Hall da fama"
     />
@@ -11,8 +11,8 @@
         <img :src="player.img" :alt="player.name">
         <span class="player-name">{{ player.name }}</span>
 
-        <p class="subtitle">{{ player.wins }} vitórias</p>
-        <p class="subtitle">{{ player.games }} jogos</p>
+        <span class="subtitle">{{ player.wins }} vitórias</span>
+        <span class="subtitle">{{ player.games }} jogos</span>
       </div>
     </div>
 
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import FameIcon from '@/assets/images/dashboard/fame-icon.png';
 import CardHeader from './CardHeader';
 
 export default {
@@ -29,6 +30,7 @@ export default {
   },
   data() {
     return {
+      img: FameIcon,
       players: [
         {
           img: 'http://via.placeholder.com/65x65',

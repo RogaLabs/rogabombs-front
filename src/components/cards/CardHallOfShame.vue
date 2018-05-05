@@ -1,6 +1,6 @@
 <template>
   <div class="shame">
-    <card-header img="http://via.placeholder.com/65x65" title="Hall da Vergonha" />
+    <card-header :img="img" subtitle="Maio/2018" title="Hall da Vergonha" />
 
     <div class="players">
       <div class="player" v-for="player in players" :key="player.id">
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import ShameIcon from '@/assets/images/dashboard/shame-icon.png';
 import CardHeader from './CardHeader';
 
 export default {
@@ -21,6 +22,7 @@ export default {
   },
   data() {
     return {
+      img: ShameIcon,
       players: [
         {
           img: 'http://via.placeholder.com/65x65',
