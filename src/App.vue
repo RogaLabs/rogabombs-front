@@ -27,3 +27,16 @@ export default {
   },
 };
 </script>
+
+<style>
+body {
+  background-image: url('./assets/app-background.jpg');
+  background-size: cover;
+}
+
+#app {
+  background: none;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+</style>

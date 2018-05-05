@@ -27,6 +27,7 @@ export default {
   box-shadow: 5px 5px rgba(#000000, 0.16);
   font-weight: bold;
   background: #ffffff;
+  grid-area: lastGame;
 }
 
 .information {

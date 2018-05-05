@@ -5,7 +5,7 @@
     <div class="players">
       <div class="player" v-for="player in players" :key="player.id">
         <img :src="player.img" :alt="player.name">
-        <p class="player-name">{{ player.name }}</p>
+        <span class="player-name">{{ player.name }}</span>
       </div>
     </div>
   </div>
@@ -47,12 +47,13 @@ export default {
   box-shadow: 5px 5px rgba(#000000, 0.16);
   font-weight: bold;
   background: #ffffff;
-  align-self: stretch;
+  grid-area: shame;
 }
 
 .players {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
 }
 
 .player {
