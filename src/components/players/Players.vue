@@ -1,7 +1,7 @@
 <template>
   <v-container fluid fill-height>
     <v-layout align-center justify-center>
-    <v-data-table
+      <v-data-table
         :headers="headers"
         :items="players"
         hide-actions
@@ -14,8 +14,11 @@
           <td>{{ props.item.ranking }}</td>
         </template>
       </v-data-table>
+      <NewPlayer/>
     </v-layout>
   </v-container>
+
+
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -24,8 +27,11 @@
 </style>
 
 <script>
-export default {
-  data() {
+  import NewPlayer from "./NewPlayer"
+
+  export default {
+    components: { NewPlayer },
+    data() {
     return {
       headers: [
         { text: 'Jogador', value: 'name' },
