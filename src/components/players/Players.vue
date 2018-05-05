@@ -52,80 +52,80 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .new-player{
-    align-self: flex-end;
-  }
+.new-player {
+  align-self: flex-end;
+}
 
-  .date-picker{
-    max-width: 200px;
-    width: 100%;
-  }
+.date-picker {
+  max-width: 200px;
+  width: 100%;
+}
 </style>
 
 <script>
-  import NewPlayer from './NewPlayer';
+import NewPlayer from './NewPlayer';
 
-  export default {
-    components: { NewPlayer },
-    data() {
-      return {
-        date: null,
-        dateFormatted: null,
-        menu1: false,
-        menu2: false,
-        headers: [
-          { text: 'Jogador', value: 'name' },
-          { text: 'Partidas Jogadas', value: 'matches' },
-          { text: 'Vitórias', value: 'victories' },
-          { text: 'Ranking', value: 'ranking' },
-        ],
-        players: [
-          {
-            name: 'Negao do zap',
-            matches: 123,
-            victories: 123,
-            ranking: 1,
-          },
-          {
-            name: 'Atalabs',
-            matches: 75,
-            victories: 69,
-            ranking: 2,
-          },
-          {
-            name: 'Mano Ralte',
-            matches: 66,
-            victories: 88,
-            ranking: 3,
-          },
-        ],
-      };
+export default {
+  components: { NewPlayer },
+  data() {
+    return {
+      date: null,
+      dateFormatted: null,
+      menu1: false,
+      menu2: false,
+      headers: [
+        { text: 'Jogador', value: 'name' },
+        { text: 'Partidas Jogadas', value: 'matches' },
+        { text: 'Vitórias', value: 'victories' },
+        { text: 'Ranking', value: 'ranking' },
+      ],
+      players: [
+        {
+          name: 'Negao do zap',
+          matches: 123,
+          victories: 123,
+          ranking: 1,
+        },
+        {
+          name: 'Atalabs',
+          matches: 75,
+          victories: 69,
+          ranking: 2,
+        },
+        {
+          name: 'Mano Ralte',
+          matches: 66,
+          victories: 88,
+          ranking: 3,
+        },
+      ],
+    };
+  },
+  computed: {
+    computedDateFormatted() {
+      return this.formatDate(this.date);
     },
-    computed: {
-      computedDateFormatted() {
-        return this.formatDate(this.date);
-      },
+  },
+
+  watch: {
+    date() {
+      this.dateFormatted = this.formatDate(this.date);
     },
+  },
 
-    watch: {
-      date (val) {
-        this.dateFormatted = this.formatDate(this.date)
-      },
+  methods: {
+    formatDate(date) {
+      if (!date) return null;
+
+      const [year, month, day] = date.split('-');
+      return `${month}/${day}/${year}`;
     },
+    parseDate(date) {
+      if (!date) return null;
 
-    methods: {
-      formatDate(date) {
-        if (!date) return null
-
-        const [year, month, day] = date.split('-')
-        return `${month}/${day}/${year}`
-      },
-      parseDate (date) {
-        if (!date) return null
-
-        const [month, day, year] = date.split('/')
-        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
-      },
+      const [month, day, year] = date.split('/');
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
     },
-  };
+  },
+};
 </script>
