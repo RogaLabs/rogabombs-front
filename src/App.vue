@@ -7,9 +7,9 @@
       </v-toolbar-items>
     </v-toolbar>
 
-    <div>
+    <v-layout fluid>
       <router-view/>
-    </div>
+    </v-layout>
   </v-app>
 </template>
 
