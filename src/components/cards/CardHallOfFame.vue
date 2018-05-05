@@ -1,18 +1,23 @@
 <template>
   <div class="fame">
     <card-header
-      img="http://via.placeholder.com/65x65"
+      :img="img"
       subtitle="Maio/2018"
       title="Hall da fama"
     />
 
     <div class="players">
-      <div class="player" v-for="player in players" :key="player.id">
-        <img :src="player.img" :alt="player.name">
+      <div class="player" v-for="(player, index) in players" :key="player.id">
+        <v-badge left :color="getColor(index)">
+          <span slot="badge">{{ index + 1 }}</span>
+          <v-avatar size=65>
+            <img :src="player.img" :alt="player.name">
+          </v-avatar>
+        </v-badge>
         <span class="player-name">{{ player.name }}</span>
 
-        <p class="subtitle">{{ player.wins }} vitórias</p>
-        <p class="subtitle">{{ player.games }} jogos</p>
+        <span class="subtitle">{{ player.wins }} vitórias</span>
+        <span class="subtitle">{{ player.games }} jogos</span>
       </div>
     </div>
 
@@ -20,7 +25,14 @@
 </template>
 
 <script>
+import FameIcon from '@/assets/images/dashboard/fame-icon.png';
 import CardHeader from './CardHeader';
+
+const badgeColors = {
+  0: 'yellow',
+  1: 'grey',
+  2: 'orange',
+};
 
 export default {
   name: 'card-hall-of-fame',
@@ -29,6 +41,7 @@ export default {
   },
   data() {
     return {
+      img: FameIcon,
       players: [
         {
           img: 'http://via.placeholder.com/65x65',
@@ -50,6 +63,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    getColor(index) {
+      return badgeColors[index];
+    },
   },
 };
 </script>
@@ -97,12 +115,10 @@ header {
   align-items: center;
   flex-direction: column;
   text-align: center;
+}
 
-  & img {
-    max-width: 65px;
-    margin-bottom: 1em;
-    border-radius: 50%;
-  }
+.avatar {
+  margin-bottom: 1em;
 }
 
 .player-name {
