@@ -1,12 +1,12 @@
-                                                                                                       <template>
+<template>
   <v-app>
-    <header>
-      <ul>
-        <li v-for="screen in screens" :key="screen.id">
-          <router-link :to="{ path: screen.url }">{{ screen.title }}</router-link>
-        </li>
-      </ul>
-    </header>
+    <v-toolbar>
+      <v-spacer></v-spacer>
+      <v-toolbar-items v-for="screen in screens" :key="screen.id">
+        <v-btn flat route :to="{ path: screen.url }"flat>{{ screen.title }}</v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+
     <div>
       <router-view/>
     </div>
