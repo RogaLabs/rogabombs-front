@@ -1,10 +1,10 @@
 <template>
-  <header>
-    <div class="title">
-      <img :src="img" alt="Placeholder">
-      <h2>{{ title }}</h2>
+  <header class="card-header">
+    <img :src="img" alt="Placeholder">
+    <div>
+      <h1>{{ title }}</h1>
+      <span v-if="subtitle" class="subtitle">Maio/2018</span>
     </div>
-    <span v-if="subtitle" class="subtitle">Maio/2018</span>
   </header>
 </template>
 
@@ -30,9 +30,12 @@ export default {
 
 
 <style scoped lang="scss">
-header {
+.card-header {
+  display: flex;
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+  align-items: center;
+  justify-content: center;
 
   & img {
     margin-right: 1em;
@@ -41,11 +44,5 @@ header {
 
 .subtitle {
   color: #797979;
-}
-
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
