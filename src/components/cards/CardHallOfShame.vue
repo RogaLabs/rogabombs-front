@@ -4,7 +4,9 @@
 
     <div class="players">
       <div class="player" v-for="player in players" :key="player.id">
-        <img :src="player.img" :alt="player.name">
+        <v-avatar size=65>
+          <img :src="player.img" :alt="player.name">
+        </v-avatar>
         <span class="player-name">{{ player.name }}</span>
       </div>
     </div>
@@ -64,12 +66,10 @@ export default {
   align-items: center;
   flex-direction: column;
   text-align: center;
+}
 
-  & img {
-    max-width: 65px;
-    margin-bottom: 1em;
-    border-radius: 50%;
-  }
+.avatar {
+  margin-bottom: 1em;
 }
 
 .player-name {
