@@ -21,9 +21,9 @@ export default {
       screens: [
         { id: '1', title: 'Painel', url: '/' },
         { id: '2', title: 'Jogadores', url: '/players' },
-        { id: '3', title: 'Partidas', url: '/matches' }
-      ]
+        { id: '3', title: 'Partidas', url: '/matches' },
+      ],
     };
-  }
+  },
 };
 </script>

@@ -30,9 +30,9 @@
 
 <script>
   export default {
-    name: "NewPlayer",
+    name: 'NewPlayer',
     data: () => ({
-      dialog: false
-    })
-  }
+      dialog: false,
+    }),
+  };
 </script>

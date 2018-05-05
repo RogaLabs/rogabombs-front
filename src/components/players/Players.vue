@@ -25,39 +25,39 @@
 </style>
 
 <script>
-  import NewPlayer from "./NewPlayer"
+  import NewPlayer from './NewPlayer';
 
   export default {
     components: { NewPlayer },
     data() {
-    return {
-      headers: [
-        { text: 'Jogador', value: 'name' },
-        { text: 'Partidas Jogadas', value: 'matches' },
-        { text: 'Vitórias', value: 'victories' },
-        { text: 'Ranking', value: 'ranking' }
-      ],
-      players: [
-        {
-          name: 'Negao do zap',
-          matches: 123,
-          victories: 123,
-          ranking: 1
-        },
-        {
-          name: 'Atalabs',
-          matches: 75,
-          victories: 69,
-          ranking: 2
-        },
-        {
-          name: 'Mano Ralte',
-          matches: 66,
-          victories: 88,
-          ranking: 3
-        }
-      ]
-    };
-  }
-};
+      return {
+        headers: [
+          { text: 'Jogador', value: 'name' },
+          { text: 'Partidas Jogadas', value: 'matches' },
+          { text: 'Vitórias', value: 'victories' },
+          { text: 'Ranking', value: 'ranking' },
+        ],
+        players: [
+          {
+            name: 'Negao do zap',
+            matches: 123,
+            victories: 123,
+            ranking: 1,
+          },
+          {
+            name: 'Atalabs',
+            matches: 75,
+            victories: 69,
+            ranking: 2,
+          },
+          {
+            name: 'Mano Ralte',
+            matches: 66,
+            victories: 88,
+            ranking: 3,
+          },
+        ],
+      };
+    },
+  };
 </script>
