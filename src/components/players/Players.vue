@@ -20,18 +20,16 @@
         <NewPlayer class="new-player"/>
       </v-layout>
 
-      <v-flex class="date-picker">
+      <div class="date-picker">
         <v-menu
           ref="menu1"
           :close-on-content-click="false"
           v-model="menu1"
           :nudge-right="40"
+          color="white"
           lazy
           transition="scale-transition"
           offset-y
-          full-width
-          max-width="290px"
-          min-width="290px"
         >
           <v-text-field
             slot="activator"
@@ -40,11 +38,13 @@
             hint="MM/DD/YYYY format"
             persistent-hint
             prepend-icon="event"
+            color="white"
             @blur="date = parseDate(dateFormatted)"
           ></v-text-field>
-          <v-date-picker v-model="date" no-title @input="menu1 = false"></v-date-picker>
+
+          <v-date-picker  v-model="date" no-title @input="menu1 = false"></v-date-picker>
         </v-menu>
-      </v-flex>
+      </div>
 
     </v-layout>
   </v-container>
