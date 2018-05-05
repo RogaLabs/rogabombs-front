@@ -12,7 +12,7 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12 sm6 md4>
-                <v-text-field label="Legal first name" required></v-text-field>
+                <v-text-field label="Name" required></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
