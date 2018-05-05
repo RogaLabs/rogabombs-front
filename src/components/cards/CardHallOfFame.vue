@@ -9,7 +9,7 @@
     <div class="players">
       <div class="player" v-for="player in players" :key="player.id">
         <img :src="player.img" :alt="player.name">
-        <p class="player-name">{{ player.name }}</p>
+        <span class="player-name">{{ player.name }}</span>
 
         <p class="subtitle">{{ player.wins }} vitórias</p>
         <p class="subtitle">{{ player.games }} jogos</p>
@@ -86,8 +86,9 @@ header {
 }
 
 .players {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
 }
 
 .player {
