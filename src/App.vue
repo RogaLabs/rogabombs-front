@@ -30,7 +30,7 @@ export default {
 
 <style>
 body {
-  background-image: url('./assets/app-background.jpg');
+  background-image: url('./assets/images/app-background.jpg');
   background-size: cover;
 }
 
