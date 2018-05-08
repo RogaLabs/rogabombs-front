@@ -4,12 +4,12 @@
       <v-layout row>
         <v-flex>
           <v-data-table
-            :headers="headers"
-            :items="players"
+            :headers='headers'
+            :items='players'
             hide-actions
-            class="elevation-1"
+            class='elevation-1'
           >
-            <template slot="items" slot-scope="props">
+            <template slot='items' slot-scope='props'>
               <td>{{ props.item.name }}</td>
               <td>{{ props.item.matches }}</td>
               <td>{{ props.item.victories }}</td>
@@ -17,39 +17,39 @@
             </template>
           </v-data-table>
         </v-flex>
-        <NewPlayer class="new-player"/>
+        <NewPlayer class='new-player'/>
       </v-layout>
 
-      <div class="date-picker">
+      <div class='date-picker'>
         <v-menu 
-          ref="menu1"
-          :close-on-content-click="false"
-          v-model="menu1"
-          :nudge-right="40"
-          color="white"
+          ref='menu1'
+          :close-on-content-click='false'
+          v-model='menu1'
+          :nudge-right='40'
+          color='white'
           lazy
-          style="visibility: collapse; position:absolute"
-          transition="scale-transition"
+          style='visibility: collapse; position:absolute'
+          transition='scale-transition'
           offset-y>
           
           <v-text-field dark
-            slot="activator"
-            class="input-datepicker"
-            v-model="dateFormatted"
-            label="Date"
-            hint="MM/DD/YYYY format"
+            slot='activator'
+            class='input-datepicker'
+            v-model='dateFormatted'
+            label='Date'
+            hint='MM/DD/YYYY format'
             persistent-hint
-            prepend-icon="event"
-            color="white"
-            @blur="date = parseDate(dateFormatted)"
+            prepend-icon='event'
+            color='white'
+            @blur='date = parseDate(dateFormatted)'
           ></v-text-field>
 
-          <v-date-picker v-model="date" no-title @input="menu1 = false"></v-date-picker>
+          <v-date-picker v-model='date' no-title @input='menu1 = false'></v-date-picker>
           
         </v-menu>
-        <p class="select-date" @click="openDatePicker">
+        <p class='select-date' @click='openDatePicker'>
           {{ selectDateTitle }}
-          <v-icon color="white">chevron_right</v-icon>
+          <v-icon color='white'>chevron_right</v-icon>
         </p>
       </div>
 
@@ -57,8 +57,8 @@
   </v-container>
 </template>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<!-- Add 'scoped' attribute to limit CSS to this component only -->
+<style lang='scss'>
 .menu__content .menuable__content__active {
   min-width: 200px;
   top: 673px;
@@ -87,7 +87,7 @@
 </style>
 
 <script>
-import NewPlayer from "./NewPlayer";
+import NewPlayer from './NewPlayer';
 
 export default {
   components: { NewPlayer },
@@ -98,31 +98,31 @@ export default {
       menu1: false,
       menu2: false,
       headers: [
-        { text: "Jogador", value: "name" },
-        { text: "Partidas Jogadas", value: "matches" },
-        { text: "Vitórias", value: "victories" },
-        { text: "Ranking", value: "ranking" }
+        { text: 'Jogador', value: 'name' },
+        { text: 'Partidas Jogadas', value: 'matches' },
+        { text: 'Vitórias', value: 'victories' },
+        { text: 'Ranking', value: 'ranking' },
       ],
       players: [
         {
-          name: "Negao do zap",
+          name: 'Negao do zap',
           matches: 123,
           victories: 123,
-          ranking: 1
+          ranking: 1,
         },
         {
-          name: "Atalabs",
+          name: 'Atalabs',
           matches: 75,
           victories: 69,
-          ranking: 2
+          ranking: 2,
         },
         {
-          name: "Mano Ralte",
+          name: 'Mano Ralte',
           matches: 66,
           victories: 88,
-          ranking: 3
-        }
-      ]
+          ranking: 3,
+        },
+      ],
     };
   },
   computed: {
@@ -130,32 +130,32 @@ export default {
       return this.formatDate(this.date);
     },
     selectDateTitle() {
-      return this.dateFormatted ? this.dateFormatted : "Selecione uma data";
-    }
+      return this.dateFormatted ? this.dateFormatted : 'Selecione uma data';
+    },
   },
 
   watch: {
     date() {
       this.dateFormatted = this.formatDate(this.date);
-    }
+    },
   },
 
   methods: {
     formatDate(date) {
       if (!date) return null;
 
-      const [year, month, day] = date.split("-");
+      const [year, month, day] = date.split('-');
       return `${day}/${month}/${year}`;
     },
     parseDate(date) {
       if (!date) return null;
 
-      const [month, day, year] = date.split("/");
-      return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+      const [month, day, year] = date.split('/');
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
     },
-    openDatePicker(){
+    openDatePicker() {
       this.$el.querySelector('.input-datepicker').click();
-    }
-  }
+    },
+  },
 };
 </script>
