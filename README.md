@@ -1,10 +1,20 @@
-# rogabombs-front
+# RogaBombs
 
-> A Vue.js project
+Roga bombs is a web scoreboard for Hudson's Bomberman matches.
 
-## Build Setup
+## Getting started
 
-``` bash
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+```
+Node.js
+npm
+```
+
+
+```
 # install dependencies
 npm install
 
