@@ -4,12 +4,12 @@
       <v-layout row>
         <v-flex>
           <v-data-table
-            :headers='headers'
-            :items='players'
+            :headers="headers"
+            :items="players"
             hide-actions
-            class='elevation-1'
+            class="elevation-1"
           >
-            <template slot='items' slot-scope='props'>
+            <template slot="items" slot-scope="props">
               <td>{{ props.item.name }}</td>
               <td>{{ props.item.matches }}</td>
               <td>{{ props.item.victories }}</td>
@@ -17,39 +17,39 @@
             </template>
           </v-data-table>
         </v-flex>
-        <NewPlayer class='new-player'/>
+        <NewPlayer class="new-player"/>
       </v-layout>
 
-      <div class='date-picker'>
+      <div class="date-picker">
         <v-menu 
-          ref='menu1'
-          :close-on-content-click='false'
-          v-model='menu1'
-          :nudge-right='40'
-          color='white'
+          ref="menu1"
+          :close-on-content-click="false"
+          v-model="menu1"
+          :nudge-right="40"
+          color="white"
           lazy
-          style='visibility: collapse; position:absolute'
-          transition='scale-transition'
+          style="visibility: collapse; position:absolute"
+          transition="scale-transition"
           offset-y>
           
           <v-text-field dark
-            slot='activator'
-            class='input-datepicker'
-            v-model='dateFormatted'
-            label='Date'
-            hint='MM/DD/YYYY format'
+            slot="activator"
+            class="input-datepicker"
+            v-model="dateFormatted"
+            label="Date"
+            hint="MM/DD/YYYY format"
             persistent-hint
-            prepend-icon='event'
-            color='white'
-            @blur='date = parseDate(dateFormatted)'
+            prepend-icon="event"
+            color="white"
+            @blur="date = parseDate(dateFormatted)"
           ></v-text-field>
 
-          <v-date-picker v-model='date' no-title @input='menu1 = false'></v-date-picker>
+          <v-date-picker v-model="date" no-title @input="menu1 = false"></v-date-picker>
           
         </v-menu>
-        <p class='select-date' @click='openDatePicker'>
+        <p class="select-date" @click="openDatePicker">
           {{ selectDateTitle }}
-          <v-icon color='white'>chevron_right</v-icon>
+          <v-icon color="white">chevron_right</v-icon>
         </p>
       </div>
 
@@ -57,8 +57,8 @@
   </v-container>
 </template>
 
-<!-- Add 'scoped' attribute to limit CSS to this component only -->
-<style lang='scss'>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss">
 .menu__content .menuable__content__active {
   min-width: 200px;
   top: 673px;
@@ -145,7 +145,7 @@ export default {
       if (!date) return null;
 
       const [year, month, day] = date.split('-');
-      return `${day}/${month}/${year}`;
+      return `${month}/${day}/${year}`;
     },
     parseDate(date) {
       if (!date) return null;
