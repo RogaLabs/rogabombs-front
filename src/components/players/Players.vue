@@ -130,7 +130,7 @@ export default {
       return this.formatDate(this.date);
     },
     selectDateTitle() {
-      return this.dateFormatted ? this.dateFormatted : "Select a Date";
+      return this.dateFormatted ? this.dateFormatted : "Selecione uma data";
     }
   },
 
