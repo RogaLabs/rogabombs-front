@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height>
+  <v-container fluid>
     <v-layout column>
       <v-layout row>
         <v-flex>
@@ -81,7 +81,7 @@
   color: white;
   cursor: pointer;
   position: absolute;
-  top: 13px;
+  top: 1em;
   left: 0;
 }
 </style>
