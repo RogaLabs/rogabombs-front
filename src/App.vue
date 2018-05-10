@@ -10,7 +10,7 @@
 
       <v-spacer></v-spacer>
 
-      <img :src="logo" alt="">
+      <img class="logo" :src="logo" alt="Logo">
     </v-toolbar>
 
     <v-layout fluid>
@@ -21,7 +21,6 @@
 
 <script>
 import logo from '@/assets/images/roga-logo.png';
-
 import dashboardIcon from '@/assets/images/navigation/dashboard-icon.png';
 import playerIcon from '@/assets/images/navigation/player-icon.png';
 import matchIcon from '@/assets/images/navigation/match-icon.png';
@@ -63,7 +62,7 @@ body {
   }
 
   .logo {
-    box-shadow: 3px 3px 0 #000;
+    box-shadow: 5px 5px 0 rgba(#000, .15);
   }
 
   .link {
