@@ -10,7 +10,12 @@
             class="player-list"
           >
             <template slot="items" slot-scope="props">
-              <td>{{ props.item.name }}</td>
+              <td>
+                <v-avatar size=35>
+                  <img :src="props.item.img" :alt="props.item.name">
+                </v-avatar>
+                <span class="player-name">{{ props.item.name }}</span>
+              </td>
               <td>{{ props.item.matches }}</td>
               <td>{{ props.item.victories }}</td>
               <td>{{ props.item.ranking }}</td>
@@ -74,9 +79,15 @@
     border-collapse: separate;
     border-spacing: 0 5px;
 
-    thead {
+    > thead {
       box-shadow: 5px 5px 0 rgba(#000, .15);
       border-radius: 5px;
+    }
+
+    > tbody {
+      > tr {
+        background: none !important;
+      }
     }
 
     th,
@@ -136,18 +147,21 @@ export default {
       ],
       players: [
         {
+          img: 'http://via.placeholder.com/65x65',
           name: 'Negao do zap',
           matches: 123,
           victories: 123,
           ranking: 1,
         },
         {
+          img: 'http://via.placeholder.com/65x65',
           name: 'Atalabs',
           matches: 75,
           victories: 69,
           ranking: 2,
         },
         {
+          img: 'http://via.placeholder.com/65x65',
           name: 'Mano Ralte',
           matches: 66,
           victories: 88,
