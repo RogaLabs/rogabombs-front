@@ -77,7 +77,6 @@
     thead {
       box-shadow: 5px 5px 0 rgba(#000, .15);
       border-radius: 5px;
-      border-spacing: 0 0;
     }
 
     th,
