@@ -7,7 +7,7 @@
             :headers="headers"
             :items="players"
             hide-actions
-            class="elevation-1"
+            class="player-list"
           >
             <template slot="items" slot-scope="props">
               <td>{{ props.item.name }}</td>
@@ -21,7 +21,7 @@
       </v-layout>
 
       <div class="date-picker">
-        <v-menu 
+        <v-menu
           ref="menu1"
           :close-on-content-click="false"
           v-model="menu1"
@@ -31,7 +31,7 @@
           style="visibility: collapse; position:absolute"
           transition="scale-transition"
           offset-y>
-          
+
           <v-text-field dark
             slot="activator"
             class="input-datepicker"
@@ -45,7 +45,7 @@
           ></v-text-field>
 
           <v-date-picker v-model="date" no-title @input="menu1 = false"></v-date-picker>
-          
+
         </v-menu>
         <p class="select-date" @click="openDatePicker">
           {{ selectDateTitle }}
@@ -65,6 +65,38 @@
   left: 192px;
   transform-origin: left top 0px;
   z-index: 8;
+}
+
+.player-list {
+  .table {
+    padding-right: 5px;
+    background: none;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+
+    thead {
+      box-shadow: 5px 5px 0 rgba(#000, .15);
+      border-radius: 5px;
+      border-spacing: 0 0;
+    }
+
+    th,
+    td {
+      & {
+        background: #fff;
+      }
+
+      &:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+    }
+  }
 }
 
 .new-player {
