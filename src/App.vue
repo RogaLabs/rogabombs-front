@@ -10,7 +10,7 @@
 
       <v-spacer></v-spacer>
 
-      <img class="logo" :src="logo" alt="Logo">
+      <img class="logo" src="../static/images/roga-logo.png" alt="Logo">
     </v-toolbar>
 
     <v-layout fluid>
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import logo from '@/assets/images/roga-logo.png';
 import dashboardIcon from '@/assets/images/navigation/dashboard-icon.png';
 import playerIcon from '@/assets/images/navigation/player-icon.png';
 import matchIcon from '@/assets/images/navigation/match-icon.png';
@@ -29,7 +28,6 @@ export default {
   name: 'App',
   data() {
     return {
-      logo,
       screens: [
         { id: '1', icon: dashboardIcon, title: 'Painel', url: '/' },
         { id: '2', icon: playerIcon, title: 'Jogadores', url: '/players' },
@@ -50,7 +48,7 @@ table.table{
 }
 
 body {
-  background-image: url('./assets/images/app-background.jpg');
+  background-image: url('../static/images/app-background.jpg');
   background-size: cover;
 }
 
