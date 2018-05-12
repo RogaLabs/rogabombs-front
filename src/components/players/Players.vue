@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height>
+  <v-container fluid>
     <v-layout column>
       <v-layout row>
         <v-flex>
@@ -21,18 +21,20 @@
       </v-layout>
 
       <div class="date-picker">
-        <v-menu
+        <v-menu 
           ref="menu1"
           :close-on-content-click="false"
           v-model="menu1"
           :nudge-right="40"
           color="white"
           lazy
+          style="visibility: collapse; position:absolute"
           transition="scale-transition"
-          offset-y
-        >
-          <v-text-field
+          offset-y>
+          
+          <v-text-field dark
             slot="activator"
+            class="input-datepicker"
             v-model="dateFormatted"
             label="Date"
             hint="MM/DD/YYYY format"
@@ -42,8 +44,13 @@
             @blur="date = parseDate(dateFormatted)"
           ></v-text-field>
 
-          <v-date-picker  v-model="date" no-title @input="menu1 = false"></v-date-picker>
+          <v-date-picker v-model="date" no-title @input="menu1 = false"></v-date-picker>
+          
         </v-menu>
+        <p class="select-date" @click="openDatePicker">
+          {{ selectDateTitle }}
+          <v-icon color="white">chevron_right</v-icon>
+        </p>
       </div>
 
     </v-layout>
@@ -51,7 +58,15 @@
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss">
+.menu__content .menuable__content__active {
+  min-width: 200px;
+  top: 673px;
+  left: 192px;
+  transform-origin: left top 0px;
+  z-index: 8;
+}
+
 .new-player {
   align-self: flex-end;
 }
@@ -59,6 +74,15 @@
 .date-picker {
   max-width: 200px;
   width: 100%;
+  position: relative;
+}
+
+.select-date {
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 1em;
+  left: 0;
 }
 </style>
 
@@ -105,6 +129,9 @@ export default {
     computedDateFormatted() {
       return this.formatDate(this.date);
     },
+    selectDateTitle() {
+      return this.dateFormatted ? this.dateFormatted : 'Selecione uma data';
+    },
   },
 
   watch: {
@@ -118,13 +145,16 @@ export default {
       if (!date) return null;
 
       const [year, month, day] = date.split('-');
-      return `${month}/${day}/${year}`;
+      return `${day}/${month}/${year}`;
     },
     parseDate(date) {
       if (!date) return null;
 
       const [month, day, year] = date.split('/');
       return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    },
+    openDatePicker() {
+      this.$el.querySelector('.input-datepicker').click();
     },
   },
 };

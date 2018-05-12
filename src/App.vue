@@ -41,6 +41,14 @@ export default {
 </script>
 
 <style lang="scss">
+.application .theme--dark.btn, .theme--dark .btn {
+  color: #797979;
+}
+
+table.table{
+  border-radius: 1em;
+}
+
 body {
   background-image: url('./assets/images/app-background.jpg');
   background-size: cover;
