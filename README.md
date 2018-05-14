@@ -13,8 +13,9 @@ Node.js
 npm
 ```
 
+### Installation
 
-```
+``` bash
 # install dependencies
 npm install
 
