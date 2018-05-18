@@ -39,6 +39,14 @@
         </v-form>
       </v-card>
     </v-dialog>
+    <v-snackbar
+      timeout=2000
+      :color="snackbarColor"
+      v-model="showSnackBar"
+    >
+      {{ snackbarText }}
+      <v-btn flat @click.native="showSnackBar = false">Fechar</v-btn>
+    </v-snackbar>
   </div>
 </template>
 
@@ -50,20 +58,41 @@ export default {
     loading: false,
     name: '',
     valid: true,
+    showSnackBar: false,
+    snackbarColor: '',
+    snackbarText: '',
   }),
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
         this.loading = true;
 
-        setTimeout(() => {
-          this.loading = false;
-        }, 3000);
+        this.$http
+          .post('https://rogabombs-api.herokuapp.com/api/players', {
+            players: {
+              name: this.name,
+            },
+          })
+          .then(() => {
+            this.snackbarColor = 'success';
+            this.snackbarText = 'Usuário cadastrado com sucesso!';
+            this.clear();
+          })
+          .catch((err) => {
+            console.error(err);
+            this.snackbarColor = 'error';
+            this.snackbarText = 'Houve um erro ao cadastrar o usuário.';
+            this.loading = false;
+          })
+          .finally(() => {
+            this.showSnackBar = true;
+          });
       }
     },
     clear() {
       this.$refs.form.reset();
       this.dialog = false;
+      this.loading = false;
     },
   },
 };
