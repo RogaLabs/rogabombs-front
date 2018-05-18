@@ -8,17 +8,18 @@
             :items="players"
             hide-actions
             class="player-list"
+            :no-data-text="dataTableText"
           >
             <template slot="items" slot-scope="props">
               <td>
                 <v-avatar size=35>
-                  <img :src="props.item.img" :alt="props.item.name">
+                  <img :src="props.item.img || defaultImg" :alt="props.item.name">
                 </v-avatar>
                 <span class="player-name">{{ props.item.name }}</span>
               </td>
-              <td>{{ props.item.matches }}</td>
-              <td>{{ props.item.victories }}</td>
-              <td>{{ props.item.ranking }}</td>
+              <td>{{ props.item.matches_played }}</td>
+              <td>{{ props.item.wins }}</td>
+              <!-- <td>{{ props.item.ranking }}</td> -->
             </template>
           </v-data-table>
         </v-flex>
@@ -72,6 +73,10 @@
   z-index: 8;
 }
 
+.avatar {
+  margin-right: 2em;
+}
+
 .player-list {
   .table {
     padding-right: 5px;
@@ -80,7 +85,7 @@
     border-spacing: 0 5px;
 
     > thead {
-      box-shadow: 5px 5px 0 rgba(#000, .15);
+      box-shadow: 5px 5px 0 rgba(#000, 0.15);
       border-radius: 5px;
     }
 
@@ -137,37 +142,18 @@ export default {
     return {
       date: null,
       dateFormatted: null,
+      loadingPlayers: true,
       menu1: false,
       menu2: false,
       headers: [
         { text: 'Jogador', value: 'name' },
-        { text: 'Partidas Jogadas', value: 'matches' },
-        { text: 'Vitórias', value: 'victories' },
-        { text: 'Ranking', value: 'ranking' },
+        { text: 'Partidas Jogadas', value: 'matches_played' },
+        { text: 'Vitórias', value: 'wins' },
+        // { text: 'Ranking', value: 'ranking' },
       ],
-      players: [
-        {
-          img: 'http://via.placeholder.com/65x65',
-          name: 'Negao do zap',
-          matches: 123,
-          victories: 123,
-          ranking: 1,
-        },
-        {
-          img: 'http://via.placeholder.com/65x65',
-          name: 'Atalabs',
-          matches: 75,
-          victories: 69,
-          ranking: 2,
-        },
-        {
-          img: 'http://via.placeholder.com/65x65',
-          name: 'Mano Ralte',
-          matches: 66,
-          victories: 88,
-          ranking: 3,
-        },
-      ],
+      players: [],
+      defaultImg:
+        'http://4.bp.blogspot.com/-PDqvxCC-8wQ/UPnM3-TWJeI/AAAAAAAAAkc/7J9-SYbKyzQ/s1600/capture-20130118-192904.png',
     };
   },
   computed: {
@@ -176,6 +162,9 @@ export default {
     },
     selectDateTitle() {
       return this.dateFormatted ? this.dateFormatted : 'Selecione uma data';
+    },
+    dataTableText() {
+      return this.loadingPlayers ? 'Carregando...' : 'Nenhum jogador encontrado';
     },
   },
 
@@ -201,6 +190,17 @@ export default {
     openDatePicker() {
       this.$el.querySelector('.input-datepicker').click();
     },
+  },
+
+  mounted() {
+    this.$http
+      .get('https://rogabombs-api.herokuapp.com/api/players')
+      .then(({ data: response }) => {
+        this.players = response.data;
+      })
+      .finally(() => {
+        this.loadingPlayers = false;
+      });
   },
 };
 </script>

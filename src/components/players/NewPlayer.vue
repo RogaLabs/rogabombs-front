@@ -40,7 +40,7 @@
       </v-card>
     </v-dialog>
     <v-snackbar
-      timeout=2000
+      :timeout=2000
       :color="snackbarColor"
       v-model="showSnackBar"
     >
@@ -78,8 +78,7 @@ export default {
             this.snackbarText = 'Usuário cadastrado com sucesso!';
             this.clear();
           })
-          .catch((err) => {
-            console.error(err);
+          .catch(() => {
             this.snackbarColor = 'error';
             this.snackbarText = 'Houve um erro ao cadastrar o usuário.';
             this.loading = false;
