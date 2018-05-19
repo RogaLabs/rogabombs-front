@@ -23,7 +23,7 @@
             </template>
           </v-data-table>
         </v-flex>
-        <new-player />
+        <new-player @add-player="handleAddPlayer" />
       </v-layout>
 
       <date-picker
@@ -66,6 +66,9 @@ export default {
     },
   },
   methods: {
+    handleAddPlayer(newPlayer) {
+      this.players.push(newPlayer);
+    },
     handleDateSelection(selectedDate) {
       this.date = selectedDate;
     },
@@ -85,6 +88,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  margin: 0;
+}
+
 .menu__content .menuable__content__active {
   min-width: 200px;
   top: 673px;

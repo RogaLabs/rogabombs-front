@@ -69,11 +69,12 @@ export default {
 
         this.$http
           .post('https://rogabombs-api.herokuapp.com/api/players', {
-            players: {
+            player: {
               name: this.name,
             },
           })
-          .then(() => {
+          .then(({ data: response }) => {
+            this.$emit('add-player', response.data);
             this.snackbarColor = 'success';
             this.snackbarText = 'Usuário cadastrado com sucesso!';
             this.clear();
