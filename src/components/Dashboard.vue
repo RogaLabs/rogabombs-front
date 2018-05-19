@@ -19,5 +19,10 @@ export default {
 <style scoped lang="scss">
 .dashboard {
   margin: auto;
+
+  @media screen and (max-width: 599px) {
+    width: 100%;
+    margin: 0 1em 1em 1em;
+  }
 }
 </style>

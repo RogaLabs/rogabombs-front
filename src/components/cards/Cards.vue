@@ -28,6 +28,13 @@ export default {
     'fame lastGame'
     'fame shame';
   grid-gap: 1em;
+
+  @media screen and (max-width: 599px) {
+    grid-template-areas:
+      'fame fame'
+      'lastGame lastGame'
+      'shame shame';
+  }
 }
 </style>
 

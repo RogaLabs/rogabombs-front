@@ -39,11 +39,12 @@ export default {
 </script>
 
 <style lang="scss">
-.application .theme--dark.btn, .theme--dark .btn {
+.application .theme--dark.btn,
+.theme--dark .btn {
   color: #797979;
 }
 
-table.table{
+table.table {
   border-radius: 1em;
 }
 
@@ -61,6 +62,32 @@ body {
 }
 
 .header-navigation {
+  .toolbar__content {
+    min-height: 48px;
+
+    @media screen and (max-width: 599px) {
+      height: auto !important;
+      flex-direction: column;
+
+      .logo {
+        margin-top: 1em;
+        margin-right: 0 !important;
+      }
+
+      .toolbar__items {
+        @media screen and (max-width: 599px) {
+          width: 100% !important;
+          margin-left: 0 !important;
+          justify-content: center;
+
+          a {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
   &.-transparent {
     padding: 2rem 0;
     background-color: transparent;
@@ -68,7 +95,7 @@ body {
   }
 
   .logo {
-    box-shadow: 5px 5px 0 rgba(#000, .15);
+    box-shadow: 5px 5px 0 rgba(#000, 0.15);
   }
 
   .link {
@@ -94,7 +121,7 @@ body {
           bottom: -2px;
           left: 0;
           display: block;
-          content: "";
+          content: '';
           width: 100%;
           height: 4px;
           background: #fff;
