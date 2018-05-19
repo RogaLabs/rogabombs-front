@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  name: 'NewPlayer',
+  name: 'new-player',
   data: () => ({
     dialog: false,
     loading: false,
@@ -96,3 +96,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.dialog__activator {
+  display: flex;
+}
+</style>
