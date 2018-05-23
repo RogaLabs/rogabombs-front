@@ -2,44 +2,51 @@
   <div class="shame">
     <card-header :img="img" subtitle="Maio/2018" title="Hall da Vergonha" />
 
-    <div class="players">
-      <div class="player" v-for="player in players" :key="player.id">
-        <v-avatar size=65>
-          <img :src="player.img" :alt="player.name">
-        </v-avatar>
-        <span class="player-name">{{ player.name }}</span>
+    <template v-if="!loading && players.length > 0">
+      <div class="players">
+        <div class="player" v-for="player in players" :key="player.id">
+          <v-avatar size=65>
+            <img :src="player.img" :alt="player.name">
+          </v-avatar>
+          <span class="player-name">{{ player.name }}</span>
+        </div>
       </div>
-    </div>
+    </template>
+    <empty-card
+      v-else
+      :loading="loading"
+      title="Nenhum dado há exibir"
+    />
   </div>
 </template>
 
 <script>
 import ShameIcon from '@/assets/images/dashboard/shame-icon.png';
 import CardHeader from './CardHeader';
+import EmptyCard from './EmptyCard';
 
 export default {
   name: 'card-hall-of-shame',
   components: {
     CardHeader,
+    EmptyCard,
   },
   data() {
     return {
       img: ShameIcon,
-      players: [
-        {
-          img: 'http://via.placeholder.com/65x65',
-          name: 'Negão do zap',
-        },
-        {
-          img: 'http://via.placeholder.com/65x65',
-          name: 'Negão do zap',
-        },
-        {
-          img: 'http://via.placeholder.com/65x65',
-          name: 'Negão do zap',
-        },
-      ],
+      loading: true,
+      players: [],
     };
+  },
+  mounted() {
+    this.$http
+      .get('https://rogabombs-api.herokuapp.com/api/dashboard/shame')
+      .then(({ data: response }) => {
+        this.players = response;
+      })
+      .finally(() => {
+        this.loading = false;
+      });
   },
 };
 </script>

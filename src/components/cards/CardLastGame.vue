@@ -1,29 +1,58 @@
 <template>
   <div class="lastGame">
     <card-header :img="img" title="Última partida" />
-    <div class="information">
-      <span>05/05/2018</span>
-      <img width="40px" :src="fameIcon">
-      <span>Negao do zap</span>
-    </div>
+
+    <template v-if="!loading && !!lastGame">
+      <div class="information">
+        <span>{{ lastGame.date | formatDate }}</span>
+        <img width="40px" :src="fameIcon">
+        <span>{{ lastGame.winner.name }}</span>
+      </div>
+    </template>
+
+    <empty-card
+      v-else
+      :loading="loading"
+      title="Nenhum dado há exibir"
+    />
   </div>
 </template>
 
 <script>
+import format from 'date-fns/format';
 import FameIcon from '@/assets/images/dashboard/fame-icon.png';
 import LastGameIcon from '@/assets/images/dashboard/last-game-icon.png';
 import CardHeader from './CardHeader';
+import EmptyCard from './EmptyCard';
 
 export default {
   name: 'card-last-game',
   components: {
     CardHeader,
+    EmptyCard,
   },
   data() {
     return {
       img: LastGameIcon,
       fameIcon: FameIcon,
+      loading: true,
+      lastGame: null,
     };
+  },
+  mounted() {
+    this.$http
+      .get('https://rogabombs-api.herokuapp.com/api/matches')
+      .then(({ data: response }) => {
+        this.lastGame = response.data[0] || null;
+      })
+      .finally(() => {
+        this.loading = false;
+      });
+  },
+  filters: {
+    formatDate(date) {
+      return format(date, 'DD/MM/YYYY');
+    },
   },
 };
 </script>
