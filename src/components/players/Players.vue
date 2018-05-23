@@ -6,9 +6,9 @@
           <v-data-table
             :headers="headers"
             :items="players"
-            hide-actions
-            class="player-list"
             :no-data-text="noDataText"
+            rows-per-page-text="Jogadores por página"
+            :rows-per-page-items="[5, 10, 25,{ text: 'Todos', value: -1 }]"
           >
             <template slot="items" slot-scope="props">
               <td>
@@ -102,42 +102,5 @@ export default {
 
 .avatar {
   margin-right: 2em;
-}
-
-.player-list {
-  .table {
-    padding-right: 5px;
-    background: none;
-    border-collapse: separate;
-    border-spacing: 0 5px;
-
-    > thead {
-      box-shadow: 5px 5px 0 rgba(#000, 0.15);
-      border-radius: 5px;
-    }
-
-    > tbody {
-      > tr {
-        background: none !important;
-      }
-    }
-
-    th,
-    td {
-      & {
-        background: #fff;
-      }
-
-      &:first-child {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-      }
-
-      &:last-child {
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
-    }
-  }
 }
 </style>

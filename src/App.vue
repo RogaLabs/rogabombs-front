@@ -45,7 +45,14 @@ export default {
 }
 
 table.table {
-  border-radius: 1em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+div.datatable.table,
+.datatable__actions {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 body {
