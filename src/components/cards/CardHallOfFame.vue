@@ -76,7 +76,7 @@ export default {
 <style scoped lang="scss">
 .fame {
   padding: 1em 2em;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 5px 5px rgba(#000000, 0.16);
   font-weight: bold;
   background: #ffffff;
