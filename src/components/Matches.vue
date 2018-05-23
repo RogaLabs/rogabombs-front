@@ -30,69 +30,12 @@
   </v-container>
 </template>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  .matches {
-    box-shadow: none;
-  }
-  .match {
-    margin-bottom: 13px;
-    border-radius: 15px;
-    -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.16);
-    -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.16);
-    box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.16);
-  }
-  .expansion-panel__body > .card {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;    
-  }
-  .list {
-    background: #e0e0e0;
-  }
-  .top-player {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 68px;
-    margin-left: 30px;
-    margin-right: 20px;
-    padding-left: 10px;
-    padding-right: 65.26px;
-    background: rgba(255, 236, 0, 0.54);
-    -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.25);
-    -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.25);
-    box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.25);
-    margin-bottom: 15px;
-  }
-  .player {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 34px;
-    margin-left: 30px;
-    margin-right: 20px;
-    padding-left: 10px;
-    padding-right: 65.26px;
-    margin-bottom: 15px;
-  }
-  .avatar {
-    margin-left: 30px;
-  }
-  .player-name {
-    margin-left: 15px;
-  }
-  .special-victories {
-    margin-left: 33px;
-    display: inline-block;
-  }
-</style>
-
 <script>
 export default {
   data() {
     return {
       classes: {
-        playerOrTopPlayer: { }
+        playerOrTopPlayer: {},
       },
       matches: [
         {
@@ -105,13 +48,11 @@ export default {
               badges: '',
               victories: {
                 quantity: 5,
-                special_victories: [
-                  { type: 'flawless', additional_points: 1 }
-                ]
+                special_victories: [{ type: 'flawless', additional_points: 1 }],
               },
               divider: true,
               inset: true,
-              ranking: 1
+              ranking: 1,
             },
             {
               id: 2,
@@ -120,13 +61,13 @@ export default {
               badges: '',
               victories: {
                 quantity: 2,
-                special_victories: []
+                special_victories: [],
               },
               divider: true,
               inset: true,
-              ranking: 2
-            }
-          ]
+              ranking: 2,
+            },
+          ],
         },
         {
           date: '06 de Maio',
@@ -138,13 +79,11 @@ export default {
               badges: '',
               victories: {
                 quantity: 3,
-                special_victories: [
-                  { type: 'flawless', additional_points: 1 }
-                ]
+                special_victories: [{ type: 'flawless', additional_points: 1 }],
               },
               divider: true,
               inset: true,
-              ranking: 3
+              ranking: 3,
             },
             {
               id: 2,
@@ -153,16 +92,84 @@ export default {
               badges: '',
               victories: {
                 quantity: 1,
-                special_victories: []
+                special_victories: [],
               },
               divider: true,
               inset: true,
-              ranking: 4
-            }
-          ]
-        }
-      ]
+              ranking: 4,
+            },
+          ],
+        },
+      ],
     };
-  }
+  },
 };
 </script>
+
+<style scoped>
+.container {
+  margin: 0;
+}
+
+.matches {
+  box-shadow: none;
+}
+
+.match {
+  margin-bottom: 13px;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.16);
+}
+
+.expansion-panel__body > .card {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.list {
+  background: #e0e0e0;
+}
+
+.top-player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 68px;
+  margin-left: 30px;
+  margin-right: 20px;
+  padding-left: 10px;
+  padding-right: 65.26px;
+  background: rgba(255, 236, 0, 0.54);
+  -webkit-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 15px;
+}
+
+.player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 34px;
+  margin-left: 30px;
+  margin-right: 20px;
+  padding-left: 10px;
+  padding-right: 65.26px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  margin-left: 30px;
+}
+
+.player-name {
+  margin-left: 15px;
+}
+
+.special-victories {
+  margin-left: 33px;
+  display: inline-block;
+}
+</style>
