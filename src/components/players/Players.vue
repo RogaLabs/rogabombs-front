@@ -73,7 +73,6 @@ export default {
       this.date = selectedDate;
     },
   },
-
   mounted() {
     this.$http
       .get('https://rogabombs-api.herokuapp.com/api/players')
