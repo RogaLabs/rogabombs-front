@@ -1,0 +1,15 @@
+$font_path: '~@/assets/fonts/';
+
+// Webfont
+@font-face {
+  font-family: 'AtariST';
+  src: url($font_path + 'atarist8x16systemfont_2-webfont.woff2') format('woff2'),
+       url($font_path + 'atarist8x16systemfont_2-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+.application {
+  font-family: 'AtariST', sans-serif;
+}
