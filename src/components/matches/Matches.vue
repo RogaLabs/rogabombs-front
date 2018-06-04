@@ -46,6 +46,8 @@
             </v-card>
           </v-expansion-panel-content>
         </v-expansion-panel>
+
+        <new-match @add-match="handleAddMatch" />
     </v-layout>
   </v-container>
 </template>
@@ -54,11 +56,15 @@
 import format from 'date-fns/format';
 import ptLocale from 'date-fns/locale/pt';
 import dashboardIcon from '@/assets/images/navigation/dashboard-icon.png';
+import NewMatch from './NewMatch';
 
 const defaultImg =
   'http://4.bp.blogspot.com/-PDqvxCC-8wQ/UPnM3-TWJeI/AAAAAAAAAkc/7J9-SYbKyzQ/s1600/capture-20130118-192904.png';
 
 export default {
+  components: {
+    NewMatch,
+  },
   data() {
     return {
       dashboardIcon,
@@ -73,6 +79,9 @@ export default {
         ...m,
         matches_plays: m.matches_plays.sort((a, b) => b.score - a.score),
       }));
+    },
+    handleAddMatch(newMatch) {
+      console.log(newMatch);
     },
   },
   mounted() {

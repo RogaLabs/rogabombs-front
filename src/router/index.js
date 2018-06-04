@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Dashboard from '@/components/Dashboard';
-import Matches from '@/components/Matches';
+import Matches from '@/components/matches/Matches';
 import Players from '@/components/players/Players';
 
 Vue.use(Router);
