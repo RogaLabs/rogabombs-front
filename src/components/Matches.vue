@@ -77,7 +77,7 @@ export default {
   },
   mounted() {
     this.$http
-      .get('https://rogabombs-api.herokuapp.com/api/matches')
+      .get('matches')
       .then(({ data: response }) => {
         this.matches = this.formatResponse(response.data);
       })

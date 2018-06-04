@@ -40,7 +40,7 @@ export default {
   },
   mounted() {
     this.$http
-      .get('https://rogabombs-api.herokuapp.com/api/dashboard/shame')
+      .get('dashboard/shame')
       .then(({ data: response }) => {
         this.players = response;
       })

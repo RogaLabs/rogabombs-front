@@ -62,7 +62,7 @@ export default {
   },
   mounted() {
     this.$http
-      .get('https://rogabombs-api.herokuapp.com/api/dashboard/fame')
+      .get('dashboard/fame')
       .then(({ data: response }) => {
         this.players = response;
       })

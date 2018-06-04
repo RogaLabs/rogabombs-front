@@ -41,7 +41,7 @@ export default {
   },
   mounted() {
     this.$http
-      .get('https://rogabombs-api.herokuapp.com/api/matches')
+      .get('matches')
       .then(({ data: response }) => {
         this.lastGame = response.data[0] || null;
       })

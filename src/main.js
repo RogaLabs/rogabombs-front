@@ -8,6 +8,8 @@ import router from './router';
 import App from './App';
 
 Vue.use(VueResource);
+Vue.http.options.root = 'https://rogabombs-api.herokuapp.com/api';
+
 Vue.use(Vuetify, {
   theme: {
     primary: '#ee44aa',

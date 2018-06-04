@@ -68,7 +68,7 @@ export default {
         this.loading = true;
 
         this.$http
-          .post('https://rogabombs-api.herokuapp.com/api/players', {
+          .post('players', {
             player: {
               name: this.name,
             },

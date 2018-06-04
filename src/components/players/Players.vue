@@ -75,7 +75,7 @@ export default {
   },
   mounted() {
     this.$http
-      .get('https://rogabombs-api.herokuapp.com/api/players')
+      .get('players')
       .then(({ data: response }) => {
         this.players = response.data;
       })
