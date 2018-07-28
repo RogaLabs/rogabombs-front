@@ -11,7 +11,7 @@
           </v-card-title>
           <v-card-text>
             <v-container grid-list-md>
-              <v-layout row wrap v-for="i in 5">
+              <v-layout row wrap :key="i" v-for="i in 5">
                 <v-flex xs6>
                   <v-select
                     autocomplete
