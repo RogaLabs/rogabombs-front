@@ -52,7 +52,6 @@
 
 <script>
 export default {
-  name: 'new-player',
   data: () => ({
     dialog: false,
     loading: false,

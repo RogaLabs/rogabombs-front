@@ -10,36 +10,34 @@
             <span class="headline">Nova Partida</span>
           </v-card-title>
           <v-card-text>
-            <div class="new-match-fields">
-              <v-select
-                :autocomplete="true"
-                v-model="player_id"
-                :items="players"
-                :rules="[v => !!v || 'Campo obrigatório!']"
-                label="Jogador"
-                item-text="name"
-                item-value="id"
-                required
-              />
-              <v-text-field
-                v-model.number="score"
-                :min="0"
-                :rules="[v => v >= 0 || 'Campo obrigatório!']"
-                label="Pontos"
-                required
-                type="number"
-              />
-              <v-btn
-                fab
-                dark
-                small
-                color="yellow"
-                :disabled="!valid || loading"
-                @click="submit"
-              >
-                <v-icon dark>add</v-icon>
-              </v-btn>
-            </div>
+            <v-container grid-list-md>
+              <v-layout row wrap v-for="i in 5">
+                <v-flex xs6>
+                  <v-select
+                    autocomplete
+                    clearable
+                    v-model="matches_plays[i - 1].player_id"
+                    :items="players"
+                    :rules="[v => !!v || 'Campo obrigatório!']"
+                    label="Jogador"
+                    item-text="name"
+                    item-value="id"
+                    required
+                  />
+                </v-flex>
+                <v-flex xs6>
+                  <v-text-field
+                    v-model.number="matches_plays[i - 1].score"
+                    :min="0"
+                    :max="5"
+                    :rules="[v => v >= 0 || 'Campo obrigatório!', v => v <= 5 || 'Máximo de 5 pontos!']"
+                    label="Pontos"
+                    required
+                    type="number"
+                  />
+                </v-flex>
+              </v-layout>
+            </v-container>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -75,8 +73,12 @@
 </template>
 
 <script>
+const initialMatchesPlays = Array.from({ length: 5 }, () => ({
+  player_id: null,
+  score: null,
+}));
+
 export default {
-  name: 'new-player',
   data: () => ({
     dialog: true,
     loading: false,
@@ -87,7 +89,7 @@ export default {
     player_id: '',
     players: [],
     score: 0,
-    matches_plays: [],
+    matches_plays: initialMatchesPlays,
   }),
   methods: {
     submit() {
@@ -104,7 +106,7 @@ export default {
       this.$refs.form.reset();
       this.dialog = false;
       this.loading = false;
-      this.matches_plays = [];
+      this.matches_plays = initialMatchesPlays;
     },
     saveMatch() {
       console.log(this.matches_plays);
@@ -150,8 +152,11 @@ export default {
   display: flex;
 }
 
-.new-match-fields {
-  display: flex;
-  justify-content: space-between;
+.card__text {
+  padding: 0 16px;
+}
+
+.container.grid-list-md {
+  padding: 0;
 }
 </style>
