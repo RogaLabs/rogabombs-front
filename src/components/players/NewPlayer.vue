@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="new-player-container">
     <v-dialog v-model="dialog" persistent max-width="500px">
       <v-btn fab dark color="white" slot="activator">
         <v-icon>add</v-icon>
@@ -100,5 +100,10 @@ export default {
 <style>
 .dialog__activator {
   display: flex;
+}
+
+.new-player-container {
+  align-self: flex-end;
+  margin-left: 50px;
 }
 </style>

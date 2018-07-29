@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-layout fluid align-center justify-center>
+    <v-layout fluid align-center justify-center row>
         <v-expansion-panel expand class="matches">
           <div v-if="loadingMatches">
             Carregando...
@@ -15,7 +15,12 @@
             :key="i"
             :value="item === 2"
           >
-            <div slot="header">{{item.date | formatDate}}</div>
+            <div slot="header">
+              <v-layout align-center row>
+                <img src="@/assets/images/matches/calendar-icon.png" width="24">
+                <v-flex ml-2>{{item.date | formatDate}}</v-flex>
+              </v-layout>
+            </div>
             <v-card>
               <v-list>
 
@@ -47,7 +52,7 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
 
-        <new-match @add-match="handleAddMatch" />
+        <new-match @add-match="handleAddMatch" dialog=""/>
     </v-layout>
   </v-container>
 </template>
@@ -81,7 +86,7 @@ export default {
       }));
     },
     handleAddMatch(newMatch) {
-      console.log(newMatch);
+      this.matches = this.matches.concat(newMatch);
     },
   },
   mounted() {
